@@ -1,0 +1,410 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+    font-family: 'Rubik', sans-serif;
+}
+
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 4; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.topbluemargin{
+    
+            background-color:dodgerblue;
+            width: 100%;
+            block-size: 60px;
+            positon:relative;
+            z-index:-1;
+}
+.image1{
+            position:absolute;
+            z-index:2;
+            top:5px;
+            left:5px;
+        }
+
+        .container{
+            position:relative;
+        }
+/* Float four columns side by side */
+.column {
+    float: left;
+    width: 23%;
+    padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0px 0px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); /*this adds the "card" effect */
+  text-align: right;
+  background-color: white;
+  height: 100px;
+  width: 280px;
+  margin-left: 100px;
+}
+
+table{
+    border-collapse: collapse;
+}
+th, td {
+  border-bottom: 1px solid #ddd;
+}
+.table-wrapper{
+    position: relative;
+        display: inline-block;
+    float: left;
+}
+.othertable-wrapper{
+    margin-left: 20px;
+    display: inline-block;
+    float: right;
+}
+
+tbody tr:hover {color: dodgerblue;}
+
+    .table1 th,td {
+      padding: 12px;
+
+    }
+
+th{
+    top:0;
+    position:sticky;
+    background: lightgray;
+    font-size: 18px;
+    height:35px;
+    background-color: lightgrey;
+}
+td{
+    text-align:center;
+}
+
+.button{
+      transition-duration: 0.4s;
+  cursor: pointer;
+    
+}
+.details-button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid dodgerblue;
+    font-size: 14px;
+    border-radius: 4px;
+    color:dodgerblue;
+}
+
+.details-button:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+.greendot {
+  height: 15px;
+  width: 15px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+}
+.reddot {
+  height: 15px;
+  width: 15px;
+  background-color:red;
+  border-radius: 50%;
+  display: inline-block;
+}
+.yeldot {
+  height: 15px;
+  width: 15px;
+  background-color:yellow;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+.dropbtn {
+  background-color: dodgerblue;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: dodgerblue;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 5;
+   
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+    
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+.patient_details{
+    padding:10px;
+    display:inline-block;
+    float:left;
+}
+.container2 {
+  position: relative;
+  width: 100%;
+  display: flex;
+  transition: 0.5s;
+  padding: 20px;
+}
+
+.container2 .grid-container {
+  position: relative;
+  display: inline-grid;
+  column-gap: 30px;
+  grid-template-rows: 70px 70px;
+  grid-template-columns: 150px 150px 150px;
+  margin-left: 90px;
+  row-gap: 30px;
+  padding: 30px;
+        top: -292px;
+    right: -332px;
+}
+
+.container2#blur.active {
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.op {
+  background-color: white;
+  color: black;
+  border: 2px solid dodgerblue;
+}
+
+.op:hover,
+.op:focus {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.op {
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 500px;
+  padding: 50px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  background: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s;
+}
+
+#popup.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.btn-group2 button {
+  background-color: white;
+  color: black;
+  border: 2px solid dodgerblue;
+  padding: 9px 82px; /* Some padding 10 24*/ 
+  cursor: pointer; /* Pointer/hand icon */
+  width: 20%; /* Set a width if needed */
+  display: grid; /* Make the buttons appear below each other */
+    margin-bottom: 30px;
+}
+
+
+/* Add a background color on hover */
+.btn-group2 button:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.starting_time{
+    text-align:right;
+    margin-top:10px;
+    margin-right: 75px;
+    
+}
+
+    .flatpickr-calendar.open .flatpickr-day,
+    .flatpickr-calendar.open .flatpickr-weekdays,
+    .flatpickr-time.open .flatpickr-time-scroll {
+      font-size: 12px !important;
+    }
+.hidden{
+    display:none;
+}
+
+.patient-box {
+    background-color: #ffffff;
+    padding: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    width: 300px;
+    height: 250px;
+    
+}
+
+.detail-heading {
+    margin-left: 30px;
+}
+
+.detail {
+    margin-left: 30px;
+       font-size: 18px;
+    margin-bottom: 7px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+#surgeon{
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-family: cursive, sans-serif;
+        outline: 0;
+        background: #d9d9d9;
+        color: #2d2f31;
+        border: 1px solid #2d2f31;
+        padding: 4px;
+        border-radius: 9px;  
+}
+
+#surg_assist{
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-family: cursive, sans-serif;
+        outline: 0;
+        background: #d9d9d9;
+        color: #2d2f31;
+        border: 1px solid #2d2f31;
+        padding: 4px;
+        border-radius: 9px;   
+}
+
+#anes{
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-family: cursive, sans-serif;
+        outline: 0;
+        background: #d9d9d9;
+        color: #2d2f31;
+        border: 1px solid #2d2f31;
+        padding: 4px;
+        border-radius: 9px;     
+}
+
+#surg_tech{
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-family: cursive, sans-serif;
+        outline: 0;
+        background: #d9d9d9;
+        color: #2d2f31;
+        border: 1px solid #2d2f31;
+        padding: 4px;
+        border-radius: 9px;     
+}
+
+#circ_nurse{
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-family: cursive, sans-serif;
+        outline: 0;
+        background: #d9d9d9;
+        color: #2d2f31;
+        border: 1px solid #2d2f31;
+        padding: 4px;
+        border-radius: 9px;      
+}

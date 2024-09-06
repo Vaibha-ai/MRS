@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MRS Analysis</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="style2.css">!-->
+    <script src="script.js"></script>
+  <style>
+      html,body{
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+    font-family: 'Rubik', sans-serif;
+}
+    body {
+      margin: 0;
+      background-color: #f5f5f5; /* Light gray color */
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #333; /* Dark gray color */
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      padding-bottom: 5px;
+    }
+
+    .chart-card {
+      width: 400px;
+      height: 400px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-right: 80px;
+      margin-left: 80px; 
+      Margin-bottom: 20px;
+    }
+
+    .chart-card canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+      
+      
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 4; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.topbluemargin{
+    
+            background-color:dodgerblue;
+            width: 100%;
+            block-size: 60px;
+            positon:relative;
+            z-index:-1;
+}
+.image1{
+            position:absolute;
+            z-index:2;
+            top:5px;
+            left:5px;
+        }
+
+  </style>
+</head>
+<body>
+    
+  <!--<h1>MRS Analysis</h1>!-->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="testing2.php">Dashboard</a>
+            <a href="#">Appointments</a>
+            <a href="schedule.php">Doctors</a>
+            <a href="patient_lists.php">Patients</a>
+            <a href="reservation2.php">Reservations</a>
+            <a href="MRS%20analysis.html">Analytics</a>
+        </div>
+    
+    <div class="container">
+                <div class="topbluemargin"></div>
+                <span onclick="openNav()">
+                <div class="image1"><img id="menuimg" src="blue_menu_bar.png" height="50" width="40" ></div>
+</div>
+  <table>
+    <tr>
+      <th style="padding-top: 20px;font-size:20px;">Weekly Number of Patients</th>
+      <th style="padding-top: 20px;font-size:20px;">Monthly Revenue</th>
+    </tr>
+    <tr>
+      <td>
+        <div class="chart-card">
+          <canvas id="chart1"></canvas>
+        </div>
+      </td>
+      <td>
+        <div class="chart-card">
+          <canvas id="chart2"></canvas>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th style="padding-top: 20px;font-size:20px;">Total number of Doctors</th>
+      <th style="padding-top: 20px;font-size:20px;">Monthly Admissions</th>
+    </tr>
+    <tr>
+      <td>
+        <div class="chart-card">
+          <canvas id="chart3"></canvas>
+        </div>
+      </td>
+      <td>
+        <div class="chart-card">
+          <canvas id="chart4"></canvas>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <script>
+    // Chart 1 data
+    var ctx1 = document.getElementById('chart1').getContext('2d');
+    var chart1 = new Chart(ctx1, {
+      type: 'radar',
+      data: {
+        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        datasets: [{
+          label: 'Patients',
+          data: [50, 60, 70, 65, 80, 75],
+          backgroundColor: 'rgba(63, 81, 181, 0.5)', // Material Indigo 500 with opacity
+          borderColor: '#3949ab', // Material Indigo 700
+          pointBackgroundColor: '#3f51b5', // Material Indigo 500
+          pointBorderColor: '#fff', // White
+          pointHoverBackgroundColor: '#3949ab', // Material Indigo 700
+          pointHoverBorderColor: '#fff', // White
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          r: {
+            angleLines: {
+              display: false
+            },
+            suggestedMin: 0,
+            suggestedMax: 100
+          }
+        },
+        plugins: {
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          }
+        },
+        animation: {
+          duration: 2000,
+          easing: 'easeInOutQuart'
+        }
+      }
+    });
+
+    // Chart 2 data
+    var ctx2 = document.getElementById('chart2').getContext('2d');
+    var chart2 = new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [{
+          label: 'Revenue',
+          data: [2000, 2500, 2200, 2800, 3000, 2700],
+          fill: false,
+          borderColor: '#e91e63', // Material Pink 500
+            backgroundColor: '#F48FB1',
+          tension: 0.1,
+            borderWidth:1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          }
+        },
+        animation: {
+          duration: 2000,
+          easing: 'easeInOutQuart'
+        }
+      }
+    });
+
+    // Chart 3 data
+    var ctx3 = document.getElementById('chart3').getContext('2d');
+    var chart3 = new Chart(ctx3, {
+      type: 'bar',
+      data: {
+        labels: ['Truma', 'Pediatric', 'Vascular', 'Thoracic','Plastic','Cardiac'],
+        datasets: [{
+          label: 'Doctors',
+          data: [15, 10, 12, 8 ,11 , 9],
+          backgroundColor: ['#c5e1a5', '#b3e5fc', '#ef9a9a', '#ffe082', '#EEEEEE', '#9FA8DA'], // Material Light Green 200, Light Blue 200, Light Red 200, Amber 200
+          borderColor: ['#689f38', '#1976d2', '#c62828', '#ff6f00', '#424242', '#283593'], // Material Light Green 700, Blue 700, Red 800, Amber 800
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+            legend: {
+        display: false // Hide the legend (label: "Doctors")
+      },
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          }
+        },
+        animation: {
+          duration: 2000,
+          easing: 'easeInOutQuart'
+        }
+      }
+    });
+
+    // Chart 4 data
+    var ctx4 = document.getElementById('chart4').getContext('2d');
+    var chart4 = new Chart(ctx4, {
+      type: 'pie',
+      data: {
+        labels: ['Emergency', 'Inpatient', 'Outpatient', 'Surgery'],
+        datasets: [{
+          label: 'Admissions',
+          data: [30, 50, 20, 40],
+          backgroundColor: ['#b39ddb', '#80cbc4', '#ffcc80', '#e57373'], // Material Deep Purple 200, Teal 200, Amber 200, Light Red 200
+          borderColor: ['#512da8', '#00796b', '#f57c00', '#c62828'], // Material Deep Purple 800, Teal 700, Amber 800, Light Red 800
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          }
+        },
+        animation: {
+          duration: 2000,
+          easing: 'easeInOutQuart'
+        }
+      }
+    });
+  </script>
+</body>
+</html>
